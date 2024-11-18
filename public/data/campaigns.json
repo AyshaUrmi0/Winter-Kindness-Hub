@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "title": "Warm Winter Blankets",
+      "image": "/images/blankets.jpg",
+      "description": "Provide warm blankets to families in rural areas to protect them from the harsh winter cold.",
+      "status": "Active",
+      "contactInfo": "0123456789",
+      "division": "Dhaka"
+    },
+    {
+      "id": 2,
+      "title": "Jackets for Kids",
+      "image": "/images/jackets.jpg",
+      "description": "Donate cozy jackets to children living in underprivileged communities.",
+      "status": "Active",
+      "contactInfo": "9876543210",
+      "division": "Chittagong"
+    },
+    {
+      "id": 3,
+      "title": "Sweaters for Elderly",
+      "image": "/images/sweaters.jpg",
+      "description": "Help the elderly stay warm by donating woolen sweaters.",
+      "status": "Active",
+      "contactInfo": "0145678912",
+      "division": "Sylhet"
+    },
+    {
+      "id": 4,
+      "title": "Winter Shoes for All",
+      "image": "/images/shoes.jpg",
+      "description": "Provide sturdy winter shoes to people in rural areas to protect their feet from the cold.",
+      "status": "Completed",
+      "contactInfo": "0156789123",
+      "division": "Barisal"
+    },
+    {
+      "id": 5,
+      "title": "Scarves and Beanies Drive",
+      "image": "/images/scarves.jpg",
+      "description": "Distribute scarves and beanies to families struggling to stay warm.",
+      "status": "Active",
+      "contactInfo": "0167891234",
+      "division": "Khulna"
+    },
+    {
+      "id": 6,
+      "title": "Thermal Wear for Women",
+      "image": "/images/thermal.jpg",
+      "description": "Provide thermal innerwear to women in low-income areas to ensure warmth and comfort.",
+      "status": "Active",
+      "contactInfo": "0178912345",
+      "division": "Rajshahi"
+    }
+  ]
+  

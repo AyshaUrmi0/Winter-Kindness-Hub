@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../components/Home";
-import DonationCampaign from "../components/Donation/DonationCampaign";
+
+import DonationCampaignsPage from "../components/Donation/DonationCampaignsPage";
+import AuthLayout from "../layouts/AuthLayout";
 
 const router=createBrowserRouter([
     {
@@ -8,12 +10,25 @@ const router=createBrowserRouter([
         element:<Home></Home>
     },
     {
-        path:"/donation",
-        element:<DonationCampaign></DonationCampaign>
+        path: "/donation-campaigns",
+        loader: () => fetch('/data/campaigns.json') ,
+        element: <DonationCampaignsPage />,
+        
     },
+   
     {
         path:"auth",
-        element:<h1>Login page</h1>
+        element:<AuthLayout></AuthLayout>,
+        children:[
+            {
+                path:"login",
+                element:<h1>Login</h1>
+            },
+            {
+                path:"register",
+                element:<h1>Register</h1>
+            },
+        ]
     },
     {
         path:"*",

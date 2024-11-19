@@ -24,7 +24,7 @@ const Navbar = ({ user, onLogout }) => {
           <Link to="/" className="hover:text-gray-200">
             Home
           </Link>
-          <Link to="/donation" className="hover:text-gray-200">
+          <Link to="/donation-campaigns" className="hover:text-gray-200">
             Donation Campaigns
           </Link>
           <Link to="/how-to-help" className="hover:text-gray-200">
@@ -59,7 +59,7 @@ const Navbar = ({ user, onLogout }) => {
               </ul>
             </div>
           ) : (
-            <Link to="/login" className="bg-red-400 btn">
+            <Link to="/auth/login" className="bg-red-400 btn">
               Login
             </Link>
           )}
@@ -93,7 +93,7 @@ const Navbar = ({ user, onLogout }) => {
           <Link to="/" className="block hover:text-gray-200">
             Home
           </Link>
-          <Link to="/donation" className="block hover:text-gray-200">
+          <Link to="/donation-campaigns" className="block hover:text-gray-200">
             Donation Campaigns
           </Link>
           <Link to="/how-to-help" className="block hover:text-gray-200">

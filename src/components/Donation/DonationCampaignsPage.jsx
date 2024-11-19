@@ -4,7 +4,7 @@ import Navbar from "../Navbar";
 const DonationCampaignsPage = () => {
 
     const campaigns = useLoaderData();
-    console.log(campaigns);
+   
 
 
     return (

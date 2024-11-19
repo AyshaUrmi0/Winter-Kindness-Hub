@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import 'animate.css';
+import "animate.css";
+import { AuthContext } from "../provider/AuthProvider";
 
-const Navbar = ({ user, onLogout }) => {
+const Navbar = ({ user: propUser, onLogout }) => { // Renamed the prop user to propUser
+  const { user: contextUser } = useContext(AuthContext); // Renamed the context user to contextUser
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-10 text-white bg-blue-200 shadow-lg animate__animated animate__fadeInDown ">
       <div className="container flex items-center justify-between p-4 mx-auto">
-       
+        <div>{contextUser && contextUser.name}</div>
         <Link to="/" className="flex items-center space-x-2">
           <img
             src="https://img.icons8.com/?size=96&id=81174&format=png"
@@ -19,7 +21,6 @@ const Navbar = ({ user, onLogout }) => {
           <span className="text-xl font-bold">Winter Donate</span>
         </Link>
 
-       
         <div className="hidden space-x-6 md:flex">
           <Link to="/" className="hover:text-gray-200">
             Home
@@ -35,13 +36,12 @@ const Navbar = ({ user, onLogout }) => {
           </Link>
         </div>
 
-       
         <div className="flex items-center space-x-4">
-          {user ? (
+          {propUser ? ( // Using propUser here
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src={user.photoURL} alt="User Profile" />
+                  <img src={propUser.photoURL} alt="User Profile" /> {/* Using propUser here */}
                 </div>
               </label>
               <ul
@@ -65,7 +65,6 @@ const Navbar = ({ user, onLogout }) => {
           )}
         </div>
 
-       
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden btn btn-square btn-ghost"
@@ -87,7 +86,6 @@ const Navbar = ({ user, onLogout }) => {
         </button>
       </div>
 
-    
       {isMenuOpen && (
         <div className="p-4 space-y-4 bg-blue-400 md:hidden">
           <Link to="/" className="block hover:text-gray-200">

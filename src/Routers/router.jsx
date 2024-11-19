@@ -3,6 +3,8 @@ import Home from "../components/Home";
 
 import DonationCampaignsPage from "../components/Donation/DonationCampaignsPage";
 import AuthLayout from "../layouts/AuthLayout";
+import Login from "../layouts/Login";
+import Register from "../layouts/Register";
 
 const router=createBrowserRouter([
     {
@@ -22,11 +24,11 @@ const router=createBrowserRouter([
         children:[
             {
                 path:"login",
-                element:<h1>Login</h1>
+                element:<Login></Login>
             },
             {
                 path:"register",
-                element:<h1>Register</h1>
+                element:<Register></Register>
             },
         ]
     },

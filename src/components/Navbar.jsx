@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-10 text-white bg-blue-200 shadow-lg animate__animated animate__fadeInDown">
+    <nav className="sticky top-0 z-10 text-white bg-blue-400 shadow-lg animate__animated animate__fadeInDown">
       <div className="container flex items-center justify-between p-4 mx-auto">
        
         <Link to="/" className="flex items-center space-x-2">

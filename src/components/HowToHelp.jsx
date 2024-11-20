@@ -1,3 +1,4 @@
+import Navbar from "./Navbar";
 
 
 const HowToHelp = () => {
@@ -29,6 +30,8 @@ const HowToHelp = () => {
   ];
 
   return (
+    <div> 
+      <Navbar />
     <section className="py-12 bg-blue-50">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <h2 className="mb-8 text-4xl font-bold text-center text-blue-900">
@@ -53,12 +56,13 @@ const HowToHelp = () => {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <button className="text-white bg-blue-700 btn btn-primary hover:bg-blue-800">
+          <button className="text-black bg-red-400 hover:bg-red-100 btn">
             Get Involved
           </button>
         </div>
       </div>
     </section>
+    </div>
   );
 };
 

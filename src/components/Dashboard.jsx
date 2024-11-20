@@ -22,7 +22,7 @@ const Dashboard = () => {
                 <img src={user?.photoURL || "/default-avatar.png"} alt="User Avatar" className="avatar" />
                 <p className="mb-5"><strong>Name:</strong> {user?.displayName || "Not provided"}</p>
                 <p className="mb-5"><strong>Email:</strong> {user?.email}</p>
-                <button className="mb-3 btn btn-primary" onClick={handleUpdateProfile}>
+                <button className="mb-3 text-black bg-red-400 hover:bg-red-100 btn " onClick={handleUpdateProfile}>
                     Update Profile
                 </button>
             </div>

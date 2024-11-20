@@ -97,7 +97,7 @@ const DonationDetails = () => {
               className="w-full textarea textarea-bordered"
             />
           </div>
-          <button type="submit" className="w-full btn btn-primary">
+          <button type="submit" className="w-full bg-red-400 hover:bg-red-100 btn">
             Submit
           </button>
         </form>

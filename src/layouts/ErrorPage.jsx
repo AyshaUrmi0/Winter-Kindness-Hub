@@ -27,7 +27,7 @@ const ErrorPage = () => {
       <div className="animate__animated animate__fadeInUp animate__delay-2s">
         <button
           onClick={handleGoHome}
-          className="px-4 py-2 mt-6 text-white transition-all duration-300 bg-blue-500 rounded hover:bg-blue-600"
+          className="px-4 py-2 mt-6 text-white transition-all duration-300 bg-red-400 rounded hover:bg-red-100"
         >
           Go Back to Home
         </button>

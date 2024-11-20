@@ -119,7 +119,7 @@ const Register = () => {
           {passwordError && <p className="text-sm text-red-500">{passwordError}</p>}
 
          
-          <button className="w-full py-2 mt-4 text-white bg-blue-500 rounded-lg">
+          <button className="w-full py-2 mt-4 text-white bg-red-400 rounded-lg hover:bg-red-100 btn">
             Register
           </button>
         </form>

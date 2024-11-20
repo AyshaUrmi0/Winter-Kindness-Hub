@@ -1,6 +1,7 @@
 
 import { useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar";
+import { Link } from "react-router-dom";
 const DonationCampaignsPage = () => {
 
     const campaigns = useLoaderData();
@@ -27,12 +28,13 @@ const DonationCampaignsPage = () => {
                   <h2 className="mb-2 text-lg font-semibold">{campaign.title}</h2>
                   <p className="mb-4 text-gray-700">{campaign.description}</p>
                   <p className="mb-4 text-sm text-gray-500">Division: {campaign.division}</p>
-                  <button
-                    // onClick={() => navigate(`/campaigns/${campaign.id}`)}
-                    className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
-                  >
-                    Donate Now
-                  </button>
+                  <Link to={`/donation-campaigns/${campaign.id}`} 
+   className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+>
+   Donate Now
+</Link>
+
+
                 </div>
               </div>
             ))}

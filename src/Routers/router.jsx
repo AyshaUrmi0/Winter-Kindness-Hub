@@ -5,6 +5,10 @@ import DonationCampaignsPage from "../components/Donation/DonationCampaignsPage"
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../layouts/Login";
 import Register from "../layouts/Register";
+import ErrorPage from "../layouts/ErrorPage";
+import DonationDetails from "../components/Donation/DonationDetails";
+import Dashboard from "../components/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 const router=createBrowserRouter([
     {
@@ -17,7 +21,16 @@ const router=createBrowserRouter([
         element: <DonationCampaignsPage />,
         
     },
-   
+    {
+        path: "/donation-campaigns/:id",
+        loader: ({ params }) => fetch(`/data/campaigns/${params.id}.json`),
+        element: <PrivateRoute><DonationDetails></DonationDetails></PrivateRoute>,
+    },
+    {
+        path:"/dashboard",
+        element:<Dashboard></Dashboard>
+    },
+
     {
         path:"auth",
         element:<AuthLayout></AuthLayout>,
@@ -34,7 +47,7 @@ const router=createBrowserRouter([
     },
     {
         path:"*",
-        element:<h1>Error</h1>
+        element:<ErrorPage></ErrorPage>
     },
 
 ])

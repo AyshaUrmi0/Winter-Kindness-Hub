@@ -1,12 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import app from "../firebase/firebase.config";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 
 
 
 
 export const AuthContext = createContext();
+
+const googleProvider = new GoogleAuthProvider();
+
 
 const auth = getAuth(app);
 
@@ -16,17 +20,13 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    console.log("AuthProvider rendered. Current user:", user);
-
-    
-    console.log("Initial user state:", user);
 
     const createNewUser = (email, password) => {
         setLoading(true);
         
         return createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                console.log("User created successfully:", result.user);
+               
                 setUser(result.user); 
             })
             .catch((error) => {
@@ -51,17 +51,36 @@ const AuthProvider = ({ children }) => {
     };
     
 
+    const googleSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+               
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL, 
+                };
+                setUser(userData); 
+                setLoading(false);
+                return userData;
+            })
+            .catch((error) => {
+                console.error("Google Sign-In Error:", error);
+                setLoading(false);
+            });
+    };
+    
+
     const authInfo = {
         user,
-        setUser,
         createNewUser,
         userLogin,
         logOut,
-        loading
-       
-        
+        googleSignIn,
+        loading,
     };
-
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,(user) => {
             setUser(user);
@@ -70,8 +89,7 @@ const AuthProvider = ({ children }) => {
         return () => unsubscribe();
     } ,[])
 
-   
-    console.log("AuthProvider rendered. Current user:", user);
+  
 
     return (
         <AuthContext.Provider value={authInfo}>

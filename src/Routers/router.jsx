@@ -9,6 +9,8 @@ import ErrorPage from "../layouts/ErrorPage";
 import DonationDetails from "../components/Donation/DonationDetails";
 import Dashboard from "../components/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import UpdateProfile from "../components/UpdateProfile";
+import HowToHelp from "../components/HowToHelp";
 
 const router=createBrowserRouter([
     {
@@ -28,8 +30,18 @@ const router=createBrowserRouter([
     },
     {
         path:"/dashboard",
-        element:<Dashboard></Dashboard>
+        element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
     },
+    {
+        path: "/dashboard/update-profile",
+        element: (
+            <PrivateRoute>
+             <UpdateProfile></UpdateProfile>
+            </PrivateRoute>
+        ),
+    },
+   
+    
 
     {
         path:"auth",
@@ -45,6 +57,11 @@ const router=createBrowserRouter([
             },
         ]
     },
+    {
+        path:"/how-to-help",
+        element:<HowToHelp></HowToHelp>
+    },
+
     {
         path:"*",
         element:<ErrorPage></ErrorPage>

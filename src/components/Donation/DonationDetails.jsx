@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const DonationDetails = () => {
   const campaign = useLoaderData(); 
 
-  console.log(campaign);
+ 
 
   const [formData, setFormData] = useState({
     quantity: '',
@@ -44,7 +44,7 @@ const DonationDetails = () => {
         <p className="text-sm text-gray-600">Division: {campaign.division}</p>
       </div>
 
-      {/* Donation Form */}
+      
       <div className="items-center p-6 shadow-lg card">
         <h2 className="mb-4 text-xl font-bold">Donate Now</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

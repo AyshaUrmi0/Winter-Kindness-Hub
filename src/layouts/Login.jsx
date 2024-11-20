@@ -2,41 +2,47 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-const Login = () => {
-  const navigate=useNavigate();
+import toast from "react-hot-toast";
 
-  const { userLogin,setUser}=useContext(AuthContext);
-  const location=useLocation();
-  console.log(location);
+const Login = () => {
+  const { userLogin, googleSignIn, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const email = event.target.email.value;
     const password = event.target.password.value;
-    
-   
-    alert('Form submitted');
 
-    userLogin(email,password).then(result => {
-      const user=result.user;
-      setUser(user);
-      navigate(location?.state ? location?.state : '/');
+    userLogin(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        toast.success("Login successful!");
+        navigate(location?.state ? location?.state : "/");
+      })
+      .catch((error) => {
+        toast.error(error.code);
+      });
+  };
 
-      
-    })
-    .catch(error => {
-      alert(error.code);
-    });
-
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        toast.success("Google Sign-In successful!");
+        navigate(location?.state ? location?.state : '/');
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-10 bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="p-6 bg-white rounded-lg shadow-lg w-80">
-        <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">Login your Account</h2>
+        <h2 className="mb-6 text-2xl font-bold text-center">Login to Your Account</h2>
         <form onSubmit={handleSubmit}>
-         
-          <div className="mb-4">
+        <div className="mb-4">
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
@@ -52,8 +58,6 @@ const Login = () => {
               required
             />
           </div>
-
-         
           <div className="mb-4">
             <label
               htmlFor="password"
@@ -70,15 +74,12 @@ const Login = () => {
               required
             />
           </div>
-
-       
           <div className="flex justify-end mb-4">
             <a href="#" className="text-sm text-blue-600 hover:underline">
               Forgot Password?
             </a>
           </div>
 
-       
           <div>
             <button
               type="submit"
@@ -88,6 +89,12 @@ const Login = () => {
             </button>
           </div>
         </form>
+        <button
+          onClick={handleGoogleSignIn}
+          className="w-full py-2 mt-4 text-white bg-red-500"
+        >
+          Sign in with Google
+        </button>
         <p className="mt-4 text-sm font-semibold text-center text-gray-600">Do not have an account? <Link className="text-blue-600" to="/auth/register">Register here</Link></p>
       </div>
     </div>
@@ -95,3 +102,8 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
+

@@ -6,12 +6,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBiSH3kX2MXYczud69W3NTa53-WFNyZ8-4",
-  authDomain: "winter-kindness-hub.firebaseapp.com",
-  projectId: "winter-kindness-hub",
-  storageBucket: "winter-kindness-hub.firebasestorage.app",
-  messagingSenderId: "526038799162",
-  appId: "1:526038799162:web:61364e0cedd2d925a13603"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 

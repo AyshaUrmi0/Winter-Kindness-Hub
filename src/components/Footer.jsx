@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         <footer className="p-10 text-white bg-blue-300 rounded footer footer-center">
-        {/* Navigation Links */}
+      
         <nav className="grid grid-flow-col gap-4">
           <a href="#" className="link link-hover hover:text-blue-900">
             About Us
@@ -19,7 +19,7 @@ const Footer = () => {
           </a>
         </nav>
       
-        {/* Social Media Links */}
+       
         <nav>
           <div className="grid grid-flow-col gap-4">
             <a
@@ -73,7 +73,7 @@ const Footer = () => {
           </div>
         </nav>
       
-        {/* Copyright Notice */}
+     
         <aside>
           <p className="font-bold">
             Copyright © {new Date().getFullYear()} - All rights reserved by Winter

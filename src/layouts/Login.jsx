@@ -1,13 +1,17 @@
 
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+
+
 
 const Login = () => {
   const { userLogin, googleSignIn, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const emailRef=useRef();
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +41,8 @@ const Login = () => {
       });
   };
 
+
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="p-6 bg-white rounded-lg shadow-lg w-80">
@@ -52,6 +58,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
+              ref={emailRef}
               id="email"
               className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your email"
@@ -74,16 +81,22 @@ const Login = () => {
               required
             />
           </div>
-          <div className="flex justify-end mb-4">
-            <a href="#" className="text-sm text-blue-600 hover:underline">
-              Forgot Password?
-            </a>
-          </div>
+          <Link
+  to={{
+    pathname: "/auth/forget-password",
+    state: { email: emailRef.current?.value || "" },
+  }}
+  className="text-sm text-blue-600 hover:underline"
+>
+  Forgot Password?
+</Link>
+
+
 
           <div>
             <button
               type="submit"
-              className="w-full px-4 py-2 font-semibold text-white bg-red-300 rounded-lg hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 font-semibold text-black bg-red-400 rounded-lg hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Login
             </button>
@@ -91,7 +104,7 @@ const Login = () => {
         </form>
         <button
           onClick={handleGoogleSignIn}
-          className="w-full py-2 mt-4 text-white bg-red-300 rounded-lg hover:bg-red-100 "
+          className="w-full py-2 mt-4 font-semibold text-black bg-red-400 rounded-lg hover:bg-red-100 "
         >
           Sign in with Google
         </button>

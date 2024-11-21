@@ -10,16 +10,17 @@ import GetInvolved from './GetInvolved';
 
 
 
+
 const Home = () => {
     return (
         <div>
+           
             <Navbar></Navbar>
             <Banner></Banner>
             <About></About>
             <HowItWorks></HowItWorks>
             <Impact></Impact>
             <GetInvolved></GetInvolved>
-
             <Footer></Footer>
         </div>
     );

@@ -11,6 +11,7 @@ import Dashboard from "../components/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../components/UpdateProfile";
 import HowToHelp from "../components/HowToHelp";
+import ForgetPassword from "../layouts/ForgetPassword";
 
 const router=createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router=createBrowserRouter([
                 path:"register",
                 element:<Register></Register>
             },
+            {
+                path:"forget-password",
+                element:<ForgetPassword></ForgetPassword>
+            }
         ]
     },
     {

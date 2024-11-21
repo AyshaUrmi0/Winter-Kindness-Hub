@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../components/Home";
-
 import DonationCampaignsPage from "../components/Donation/DonationCampaignsPage";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../layouts/Login";
@@ -12,66 +11,34 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../components/UpdateProfile";
 import HowToHelp from "../components/HowToHelp";
 import ForgetPassword from "../layouts/ForgetPassword";
+import MainLayout from '../components/MainLayOut';
 
-const router=createBrowserRouter([
+const router = createBrowserRouter([
     {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <MainLayout />, 
+        children: [
+            { path: "/", element: <Home /> },
+            { path: "/donation-campaigns", loader: () => fetch('/data/campaigns.json'), element: <DonationCampaignsPage /> },
+            { path: "/donation-campaigns/:id", loader: () => fetch(`/data/campaigns.json`), element: <PrivateRoute><DonationDetails /></PrivateRoute> },
+            { path: "/dashboard", element: <PrivateRoute><Dashboard /></PrivateRoute> },
+            { path: "/dashboard/update-profile", element: <PrivateRoute><UpdateProfile /></PrivateRoute> },
+            { path: "/how-to-help", element: <HowToHelp /> },
+        ],
     },
     {
-        path: "/donation-campaigns",
-        loader: () => fetch('/data/campaigns.json') ,
-        element: <DonationCampaignsPage />,
-        
+        path: "auth",
+        element: <AuthLayout />, 
+        children: [
+            { path: "login", element: <Login /> },
+            { path: "register", element: <Register /> },
+            { path: "forget-password", element: <ForgetPassword /> },
+        ],
     },
     {
-        path: "/donation-campaigns/:id",
-        loader: ({ params }) => fetch(`/data/campaigns/${params.id}.json`),
-        element: <PrivateRoute><DonationDetails></DonationDetails></PrivateRoute>,
+        path: "*",
+        element: <ErrorPage />, 
     },
-    {
-        path:"/dashboard",
-        element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
-    },
-    {
-        path: "/dashboard/update-profile",
-        element: (
-            <PrivateRoute>
-             <UpdateProfile></UpdateProfile>
-            </PrivateRoute>
-        ),
-    },
-   
-    
-
-    {
-        path:"auth",
-        element:<AuthLayout></AuthLayout>,
-        children:[
-            {
-                path:"login",
-                element:<Login></Login>
-            },
-            {
-                path:"register",
-                element:<Register></Register>
-            },
-            {
-                path:"forget-password",
-                element:<ForgetPassword></ForgetPassword>
-            }
-        ]
-    },
-    {
-        path:"/how-to-help",
-        element:<HowToHelp></HowToHelp>
-    },
-
-    {
-        path:"*",
-        element:<ErrorPage></ErrorPage>
-    },
-
-])
+]);
 
 export default router;

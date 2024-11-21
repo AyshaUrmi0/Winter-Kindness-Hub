@@ -1,6 +1,6 @@
 
 import { useLoaderData } from "react-router-dom";
-import Navbar from "../Navbar";
+
 import { Link } from "react-router-dom";
 const DonationCampaignsPage = () => {
 
@@ -10,8 +10,8 @@ const DonationCampaignsPage = () => {
 
     return (
 
-        <div className="container p-4 mx-auto">
-            <Navbar />
+        <div className="container mx-auto">
+          
           <h1 className="mb-6 text-2xl font-bold text-center">Donation Campaigns</h1>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {campaigns.map((campaign) => (

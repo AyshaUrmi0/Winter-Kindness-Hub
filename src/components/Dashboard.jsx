@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+
 
 const Dashboard = () => {
    
@@ -14,7 +14,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
+           
         
             <div className="items-center p-5 m-5 bg-white rounded-lg shadow-lg dashboard">
   <h1 className="text-2xl font-bold text-center sm:text-3xl">

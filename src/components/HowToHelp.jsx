@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+
 
 
 const HowToHelp = () => {
@@ -31,7 +31,7 @@ const HowToHelp = () => {
 
   return (
     <div> 
-      <Navbar />
+    
     <section className="py-12 bg-blue-50">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <h2 className="mb-8 text-4xl font-bold text-center text-blue-900">

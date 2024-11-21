@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
+
 
 const UpdateProfile = () => {
   const { user } = useContext(AuthContext);
@@ -28,7 +28,7 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div> <Navbar></Navbar>
+    <div> 
     <div className="flex items-center justify-center min-h-screen bg-blue-50">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
         <h2 className="mb-6 text-3xl font-bold text-center text-blue-900">

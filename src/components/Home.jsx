@@ -1,6 +1,4 @@
 
-import Navbar from './Navbar';
-import Footer from './Footer';
 import Banner from './Banner';
 import About from './About';
 import HowItWorks from './HowItWorks';
@@ -15,13 +13,13 @@ const Home = () => {
     return (
         <div>
            
-            <Navbar></Navbar>
+           
             <Banner></Banner>
             <About></About>
             <HowItWorks></HowItWorks>
             <Impact></Impact>
             <GetInvolved></GetInvolved>
-            <Footer></Footer>
+          
         </div>
     );
 };

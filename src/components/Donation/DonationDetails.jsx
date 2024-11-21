@@ -1,12 +1,28 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer} from "react-toastify"; 
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const DonationDetails = () => {
-  const campaign = useLoaderData(); 
+  
+  const { id } = useParams();
+  const campId = parseInt(id);  
 
  
+  const campaigns = useLoaderData();  
+  const campaign = campaigns.find((camp) => camp.id === campId);  
+  
+  if (!campaign) {
+    return <div>Campaign not found!</div>;  
+  }
 
+  
+  const { title, description, image, division } = campaign;
+  // console.log(campaign);  
+
+  
   const [formData, setFormData] = useState({
     quantity: '',
     itemType: '',
@@ -14,13 +30,15 @@ const DonationDetails = () => {
     additionalNotes: '',
   });
 
+  // Handle input change in the form
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted:");
     toast.success('Thank you! We will reach your destination soon.');
     setFormData({
       quantity: '',
@@ -32,16 +50,18 @@ const DonationDetails = () => {
 
   return (
     <div className="space-y-6">
-      {/* Campaign Details */}
-      <div className="p-6 shadow-lg card">
+    
+
+     
+      <div className="items-center p-6 shadow-lg card">
         <img
-          src={campaign.image}
-          alt={campaign.title}
-          className="object-cover w-full h-64"
+          src={image}
+          alt={title}
+          className="object-cover w-64 h-64 rounded-lg"
         />
-        <h1 className="mt-4 text-2xl font-bold">{campaign.title}</h1>
-        <p>{campaign.description}</p>
-        <p className="text-sm text-gray-600">Division: {campaign.division}</p>
+        <h1 className="mt-4 text-2xl font-bold">{title}</h1>
+        <p>{description}</p>
+        <p className="text-sm text-gray-600">Division: {division}</p>
       </div>
 
       
@@ -102,6 +122,16 @@ const DonationDetails = () => {
           </button>
         </form>
       </div>
+
+      {/* ToastContainer */}
+      <ToastContainer 
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        style={{ zIndex: 9999 }} 
+      />
     </div>
   );
 };

@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,24 +29,20 @@ const Register = () => {
     setPasswordError("");
 
     createNewUser(email, password)
-      .then((result) => {
-        const user = result.user;
-
-        user
-          .updateProfile({
+    .then((result) => {
+        const user = result.user; // Firebase User object
+        return updateProfile(user, {
             displayName: name,
             photoURL: photo_url,
-          })
-          .then(() => {
-            setUser(user);
-            toast.success("Registration successful!");
-            navigate("/");
-          });
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        toast.error(errorMessage);
-      });
+        });
+    })
+    .then(() => {
+        alert("Registration successful!");
+        navigate("/");
+    })
+    .catch((error) => {
+        alert(error.message);
+    });
   };
 
   return (
@@ -102,7 +98,7 @@ const Register = () => {
             </label>
             <div className="relative">
               <input
-                type={showPassword ? "text" : "password"} 
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 className="w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -112,9 +108,9 @@ const Register = () => {
               <button
                 type="button"
                 className="absolute inset-y-0 flex items-center text-gray-600 right-3 focus:outline-none"
-                onClick={() => setShowPassword(!showPassword)} 
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />} 
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
           </div>

@@ -50,7 +50,6 @@ This project leverages the following npm packages to deliver its features:
 - **[react](https://reactjs.org/):** The core library for building the UI.
 - **[react-countup](https://github.com/glennreyes/react-countup):** Displays animated count-up numbers.
 - **[react-dom](https://reactjs.org/docs/react-dom.html):** For DOM rendering.
-- **[react-fast-marquee](https://github.com/justin-chu/react-fast-marquee):** Adds smooth and customizable marquee effects.
 - **[react-hot-toast](https://react-hot-toast.com/):** Displays beautiful toast notifications.
 - **[react-intersection-observer](https://github.com/thebuilder/react-intersection-observer):** Tracks scroll positions for lazy loading and other effects.
 - **[react-router-dom](https://reactrouter.com/):** Implements routing in the SPA.

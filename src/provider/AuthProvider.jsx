@@ -12,61 +12,76 @@ import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
 
-const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Create new user
+   
     const createNewUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
-            .finally(() => setLoading(false)); // Reset loading state
+            .then((result) => {
+                setUser(result.user);
+                return result.user; // Return user for chaining
+            })
+            .catch((error) => {
+                console.error("Registration error:", error);
+                throw error; // Pass error to caller
+            })
+            .finally(() => setLoading(false));
     };
 
     // User login
     const userLogin = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
-            .finally(() => setLoading(false)); // Reset loading state
+            .then((result) => {
+                setUser(result.user);
+                return result.user; 
+            })
+            .catch((error) => {
+                console.error("Login error:", error);
+                throw error; 
+            })
+            .finally(() => setLoading(false));
     };
 
-    // Logout
+  
     const logOut = () => {
         setLoading(true);
         return signOut(auth)
-            .then(() => setUser(null))
-            .finally(() => setLoading(false)); // Reset loading state
+            .then(() => {
+                setUser(null);
+            })
+            .catch((error) => {
+                console.error("Logout error:", error);
+            })
+            .finally(() => setLoading(false));
     };
 
-    // Google sign-in
+    // Google Sign-In
     const googleSignIn = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
             .then((result) => {
-                const user = result.user;
-                const userData = {
-                    name: user.displayName,
-                    email: user.email,
-                    photo: user.photoURL,
-                };
-                setUser(userData);
-                return userData; // Return user data for chaining
+                setUser(result.user);
+                return result.user; 
             })
             .catch((error) => {
-                console.error("Google Sign-In Error:", error);
-                throw error; // Re-throw error for caller to handle
+                console.error("Google Sign-In error:", error);
+                throw error; 
             })
-            .finally(() => setLoading(false)); // Reset loading state
+            .finally(() => setLoading(false));
     };
 
-    // Authentication state observer
+    
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
             setLoading(false);
         });
         return () => unsubscribe();
@@ -74,11 +89,11 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
+        loading,
         createNewUser,
         userLogin,
         logOut,
         googleSignIn,
-        loading,
     };
 
     return (

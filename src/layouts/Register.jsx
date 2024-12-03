@@ -18,32 +18,37 @@ const Register = () => {
     const name = formData.get("name");
     const photo_url = formData.get("photo_url");
     const password = formData.get("password");
-
+  
     if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || password.length < 6) {
       setPasswordError(
         "Password must have at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
       );
       return;
     }
-
+  
     setPasswordError("");
-
+  
     createNewUser(email, password)
-    .then((result) => {
-        const user = result.user; // Firebase User object
-        return updateProfile(user, {
-            displayName: name,
-            photoURL: photo_url,
-        });
+    .then((user) => { // user is directly returned by createNewUser
+      if (!user) {
+        throw new Error("User creation failed. Please try again.");
+      }
+  
+      return updateProfile(user, {
+        displayName: name,
+        photoURL: photo_url,
+      });
     })
     .then(() => {
-        alert("Registration successful!");
-        navigate("/");
+      alert("Registration successful!");
+      navigate("/"); // Redirect to home
     })
     .catch((error) => {
-        alert(error.message);
+      console.error(error);
+      alert(error.message);
     });
-  };
+    };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

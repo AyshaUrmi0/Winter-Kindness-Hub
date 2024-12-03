@@ -38,7 +38,7 @@ const DonationDetails = () => {
 
     const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:");
+    // console.log("Form submitted:");
     toast.success('Thank you! We will reach your destination soon.');
     setFormData({
       quantity: '',

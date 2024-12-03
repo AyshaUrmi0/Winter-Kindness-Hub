@@ -4,7 +4,7 @@
       "title": "Warm Winter Blankets",
       "image": "https://i.ibb.co.com/m0VTXPc/Aysha-Ismail-Warm-Winter-Blankets-donation-based-on-Bangladesh-4db10333-e238-45af-8d5e-fb0ab0833a2b.jpgz",
       "description": "Provide warm blankets to families in rural areas to protect them from the harsh winter cold.",
-      "status": "Active",
+      "status": "active",
       "contactInfo": "0123456789",
       "division": "Dhaka"
     },
@@ -13,7 +13,7 @@
       "title": "Jackets for Kids",
       "image": "https://i.ibb.co.com/FzT2BLS/Aysha-Ismail-Jackets-for-Kids-in-donation-Bangladesh-fff6d767-b385-4e86-a020-767d55b75828.jpg",
       "description": "Donate cozy jackets to children living in underprivileged communities.",
-      "status": "Active",
+      "status": "closed",
       "contactInfo": "9876543210",
       "division": "Chittagong"
     },
@@ -22,7 +22,7 @@
       "title": "Sweaters for Elderly",
       "image": "https://i.ibb.co.com/ynYk7bV/pride-scene-with-men-celebrating-their-sexuality.jpg",
       "description": "Help the elderly stay warm by donating woolen sweaters.",
-      "status": "Active",
+      "status": "pending",
       "contactInfo": "0145678912",
       "division": "Sylhet"
     },
@@ -31,7 +31,7 @@
       "title": "Winter Shoes for All",
       "image": "https://i.ibb.co.com/fYFWqMq/view-shoe-rack-stacking-pair-footwear.jpg",
       "description": "Provide sturdy winter shoes to people in rural areas to protect their feet from the cold.",
-      "status": "Completed",
+      "status": "closed",
       "contactInfo": "0156789123",
       "division": "Barisal"
     },
@@ -40,7 +40,7 @@
       "title": "Scarves and Beanies Drive",
       "image": "https://i.ibb.co.com/XCyV8SQ/winter.jpg",
       "description": "Distribute scarves and beanies to families struggling to stay warm.",
-      "status": "Active",
+      "status": "active",
       "contactInfo": "0167891234",
       "division": "Khulna"
     },
@@ -49,7 +49,7 @@
       "title": "Thermal Wear for Women",
       "image": "https://i.ibb.co.com/YpBh2j5/close-up-pile-clothing.jpg",
       "description": "Provide thermal innerwear to women in low-income areas to ensure warmth and comfort.",
-      "status": "Active",
+      "status": "active",
       "contactInfo": "0178912345",
       "division": "Rajshahi"
     }

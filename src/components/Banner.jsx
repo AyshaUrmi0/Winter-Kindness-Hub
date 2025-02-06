@@ -19,7 +19,7 @@ const Banner = () => {
           <div
             className="relative w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: "url('https://i.ibb.co/GVn6LXz/Banner1.jpg')",
+              backgroundImage: "url('https://i.ibb.co.com/NddHFncZ/Banner1.jpg')",
             }}
           >
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">

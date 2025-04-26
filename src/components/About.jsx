@@ -24,7 +24,7 @@ const About = () => {
 
         <div className="w-full p-4 image-section md:w-1/2 ">
           <img 
-            src="https://i.ibb.co.com/G2pk8Vx/about.jpg" 
+            src="/Images/donatenow.jpg"
             alt="Winter Donation Campaign"
             className="w-full rounded-lg shadow-lg animate__animated animate__flipInX"
           />

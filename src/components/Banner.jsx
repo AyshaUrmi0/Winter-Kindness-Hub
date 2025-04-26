@@ -19,7 +19,7 @@ const Banner = () => {
           <div
             className="relative w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: "url('https://i.ibb.co.com/NddHFncZ/Banner1.jpg')",
+              backgroundImage: "url('/images/banner1.jpg')",
             }}
           >
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -39,7 +39,7 @@ const Banner = () => {
           <div
             className="relative w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: "url('https://i.ibb.co/hHyfrmr/Banner2.jpg')",
+              backgroundImage: "url('/images/banner2.jpg')",
             }}
           >
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -59,7 +59,7 @@ const Banner = () => {
           <div
             className="relative w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage: "url('https://i.ibb.co/c1s50yS/Banner3.jpg')",
+              backgroundImage: "url('/images/banner3.jpg')",
             }}
           >
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
